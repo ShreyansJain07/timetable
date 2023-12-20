@@ -8,26 +8,22 @@ import Icons from "./Icons";
 import Functions from "./Functions";
 import ContractModal from "./ContractModal";
 
-const InfoModal = ({ infoModal, setInfoModal }) => {
-  const [clicked, setClicked] = useState("teachers"); // changed og "subjects"
-  
-  const [subjects, setSubjects] = useState([]);
-  const [classes, setClasses] = useState([]);
+const InfoModal = ({ infoModal, setInfoModal,functionCalls, setFunctionCalls }) => {
+  const [clicked, setClicked] = useState("subjects");
+
+  const [subjects, setSubjects] = useState([
+    { subject: "", alais: "" },
+  ]);
+  const [classes, setClasses] = useState();
   const [teachers, setTeachers] = useState([
-    { teacher: "KILBERT", alais: "KIL", lectureCount: 0 },
-  ]); // changed og []
+  ]); 
   const [subModal, setSubModal] = useState(false);
   const [classModal, setClassModal] = useState(false);
   const [teacherModal, setTeacherModal] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
-  const [selectedTeacher, setSelectedTeacher] = useState(0); // changed og null
-  const [contractModal, setContractModal] = useState(true); // changed og false
-  const [functionCalls, setFunctionCalls] = useState([
-    { teacher: "KILBERT", subject: "Eng", lectureCount: 8, division: "9A" },
-    { teacher: "SD", subject: "Pe", lectureCount: 3, division: "9A" },
-    { teacher: "KILBERT", subject: "Art", lectureCount: 1, division: "9A" },
-  ]); // changed og []
+  const [selectedTeacher, setSelectedTeacher] = useState(0);
+  const [contractModal, setContractModal] = useState(false);
 
   const handleOk = () => {
     setInfoModal(false);
@@ -108,10 +104,18 @@ const InfoModal = ({ infoModal, setInfoModal }) => {
           <Icons clicked={clicked} setClicked={setClicked} />
           <div className="listarea">
             <div className="rows">
-              <span style={{ flex: 2, padding: "5px",fontWeight:"bold" }}>Name</span>
-              <span style={{ flex: 1, padding: "5px",fontWeight:"bold" }}>Alais</span>
-              <span style={{ flex: 1, padding: "5px",fontWeight:"bold" }}>Count</span>
-              <span style={{ flex: 1, padding: "5px",fontWeight:"bold" }}>Color</span>
+              <span style={{ flex: 2, padding: "5px", fontWeight: "bold" }}>
+                Name
+              </span>
+              <span style={{ flex: 1, padding: "5px", fontWeight: "bold" }}>
+                Alais
+              </span>
+              <span style={{ flex: 1, padding: "5px", fontWeight: "bold" }}>
+                Count
+              </span>
+              <span style={{ flex: 1, padding: "5px", fontWeight: "bold" }}>
+                Color
+              </span>
             </div>
             {clicked === "subjects" && subjects.length > 0 ? (
               <div className="scrollable-container">
@@ -139,7 +143,7 @@ const InfoModal = ({ infoModal, setInfoModal }) => {
             ) : clicked === "classes" ? (
               <div className="scrollable-container">
                 <div className="content">
-                  {classes.map((div, index) => (
+                  {classes?.map((div, index) => (
                     <div
                       className={`rows ${
                         index === selectedClass ? "selected-subject" : ""
@@ -234,6 +238,8 @@ const InfoModal = ({ infoModal, setInfoModal }) => {
           teachers={teachers}
           functionCalls={functionCalls}
           setFunctionCalls={setFunctionCalls}
+          subjects={subjects}
+          classes={classes}
         />
       )}
     </div>

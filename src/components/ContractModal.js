@@ -4,6 +4,7 @@ import lesson from "../icons/lesson.png";
 import { IoIosAdd } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { MdEdit } from "react-icons/md";
+import LessonModal from "./LessonModal";
 
 const ContractModal = ({
   contractModal,
@@ -12,6 +13,8 @@ const ContractModal = ({
   teachers,
   functionCalls,
   setFunctionCalls,
+  subjects,
+  classes
 }) => {
   const [selectedFunction, setSelectedFunction] = useState(null);
   const [lessonModal, setLessonModal] = useState(false);
@@ -103,7 +106,7 @@ const ContractModal = ({
               ))}
           </div>
           <div className="functions">
-            <div className="func">
+            <div onClick={() => setLessonModal(true)} className="func">
               <IoIosAdd color="green" size={30} />
               New
             </div>
@@ -118,6 +121,18 @@ const ContractModal = ({
           </div>
         </div>
       </div>
+      {lessonModal && (
+        <LessonModal
+          lessonModal={lessonModal}
+          setLessonModal={setLessonModal}
+          teachers={teachers}
+          classes={classes}
+          subjects={subjects}
+          teacher={teachers[teacherIndex].teacher}
+          functionCalls={functionCalls}
+          setFunctionCalls={setFunctionCalls}
+        />
+      )}
     </Modal>
   );
 };

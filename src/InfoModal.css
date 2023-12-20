@@ -109,3 +109,25 @@ gap: 15px;
     margin: 5px 0;
     padding-left: 5px;
   }
+  
+  .lesson{
+      display: flex;
+      flex-direction: column;
+    padding-top: 20px;
+    gap: 10px;
+  }
+
+  .lesson-child {
+    display: flex;
+    align-items: center;
+  }
+  
+  .lesson-child img {
+    width: 80px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .lesson-child input {
+    height: 30px;
+  }
