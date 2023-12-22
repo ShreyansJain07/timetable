@@ -1,1 +1,1 @@
-auto timetable generstion algo
+auto timetable generation algo
