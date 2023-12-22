@@ -35,6 +35,7 @@ const TeacherModal = ({teacherModal,setTeacherModal,teachers,setTeachers}) => {
     <Modal
       title="Enter teacher"
       width={300}
+      style={{ top: "40%" }}
       open={teacherModal}
       onOk={handleOk}
       onCancel={handleCancel}

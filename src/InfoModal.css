@@ -65,6 +65,11 @@ gap: 15px;
     max-height: 350px;
     overflow-y: auto;
   }
+
+  .scrollable-container-contract {
+    max-height: 310px;
+    overflow-y: auto;
+  }
   
   .content {
     overflow: hidden;
@@ -106,7 +111,7 @@ gap: 15px;
   .contract-row{
     display: flex;
     align-items: center;
-    margin: 5px 0;
+    margin: 4px 0;
     padding-left: 5px;
   }
   

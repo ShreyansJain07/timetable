@@ -22,6 +22,7 @@ const ClassModal = ({ classes, setClasses, classModal, setClassModal }) => {
     <Modal
       title="Enter Class"
       width={300}
+      style={{ top: "40%" }}
       open={classModal}
       onOk={handleOk}
       onCancel={handleCancel}

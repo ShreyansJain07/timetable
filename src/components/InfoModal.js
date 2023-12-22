@@ -8,21 +8,25 @@ import Icons from "./Icons";
 import Functions from "./Functions";
 import ContractModal from "./ContractModal";
 
-const InfoModal = ({ infoModal, setInfoModal,functionCalls, setFunctionCalls }) => {
+const InfoModal = ({
+  infoModal,
+  setInfoModal,
+  functionCalls,
+  setFunctionCalls,
+  classes,
+  setClasses,
+  subjects,
+  setSubjects,
+  teachers,
+  setTeachers,
+}) => {
   const [clicked, setClicked] = useState("subjects");
-
-  const [subjects, setSubjects] = useState([
-    { subject: "", alais: "" },
-  ]);
-  const [classes, setClasses] = useState();
-  const [teachers, setTeachers] = useState([
-  ]); 
   const [subModal, setSubModal] = useState(false);
   const [classModal, setClassModal] = useState(false);
   const [teacherModal, setTeacherModal] = useState(false);
   const [selectedSubject, setSelectedSubject] = useState(null);
   const [selectedClass, setSelectedClass] = useState(null);
-  const [selectedTeacher, setSelectedTeacher] = useState(0);
+  const [selectedTeacher, setSelectedTeacher] = useState(null);
   const [contractModal, setContractModal] = useState(false);
 
   const handleOk = () => {
@@ -101,7 +105,13 @@ const InfoModal = ({ infoModal, setInfoModal,functionCalls, setFunctionCalls }) 
         ]}
       >
         <div className="main">
-          <Icons clicked={clicked} setClicked={setClicked} />
+          <Icons
+            clicked={clicked}
+            setClicked={setClicked}
+            setSelectedClass={setSelectedClass}
+            setSelectedSubject={setSelectedSubject}
+            setSelectedTeacher={setSelectedTeacher}
+          />
           <div className="listarea">
             <div className="rows">
               <span style={{ flex: 2, padding: "5px", fontWeight: "bold" }}>
@@ -120,7 +130,7 @@ const InfoModal = ({ infoModal, setInfoModal,functionCalls, setFunctionCalls }) 
             {clicked === "subjects" && subjects.length > 0 ? (
               <div className="scrollable-container">
                 <div className="content">
-                  {subjects.map((subject, index) => (
+                  {subjects?.map((subject, index) => (
                     <div
                       className={`rows ${
                         index === selectedSubject ? "selected-subject" : ""
@@ -162,7 +172,7 @@ const InfoModal = ({ infoModal, setInfoModal,functionCalls, setFunctionCalls }) 
             ) : clicked === "teachers" ? (
               <div className="scrollable-container">
                 <div className="content">
-                  {teachers.map((teacher, index) => (
+                  {teachers?.map((teacher, index) => (
                     <div
                       className={`rows ${
                         index === selectedTeacher ? "selected-subject" : ""
@@ -240,6 +250,7 @@ const InfoModal = ({ infoModal, setInfoModal,functionCalls, setFunctionCalls }) 
           setFunctionCalls={setFunctionCalls}
           subjects={subjects}
           classes={classes}
+          setTeachers={setTeachers}
         />
       )}
     </div>

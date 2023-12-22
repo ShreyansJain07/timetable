@@ -35,6 +35,7 @@ const SubjectsModal = ({ subModal, setSubModal, subjects, setSubjects }) => {
     <Modal
       title="Enter Subject"
       width={300}
+      style={{ top: "40%" }}
       open={subModal}
       onOk={handleOk}
       onCancel={handleCancel}

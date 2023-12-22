@@ -14,13 +14,13 @@ const LessonModal = ({
   teacher,
   functionalCalls,
   setFunctionCalls,
+  setTeachers,
 }) => {
   const [sub, setSub] = useState("");
   const [div, setDiv] = useState("");
   const [lec, setLec] = useState("");
 
   const onChange = (value) => {
-    console.log(`selected ${value}`);
     setSub(value);
   };
 
@@ -36,8 +36,21 @@ const LessonModal = ({
       if(sub && div && lec){
     setFunctionCalls((prev) => [
       ...prev,
-      { teacher, subject: sub, lectureCount: lec, division: div },
+      { teacher, subject: sub, sessions: lec, targetClass: div },
     ]);
+    setTeachers(prevTeachers => {
+      const teacherIndex = prevTeachers.findIndex(teach => teach.teacher === teacher);
+      if (teacherIndex !== -1) {
+        const updatedTeachers = [...prevTeachers];
+        updatedTeachers[teacherIndex] = {
+          ...updatedTeachers[teacherIndex],
+          lectureCount: updatedTeachers[teacherIndex].lectureCount + lec,
+        };
+    
+        return updatedTeachers;
+      }
+      return prevTeachers;
+    });
     setLessonModal(false);
 }else alert("enter all values")
   };

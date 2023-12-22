@@ -6,15 +6,16 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 const Functions = ({ handleNew, handleDelete, clicked, handleLessonClick }) => {
   return (
     <div className="functions">
-      <div onClick={handleNew} className="func">
+      <div onClick={handleNew} style={{cursor:'pointer'}} className="func">
         <IoIosAdd color="green" size={30} />
         New
       </div>
-      <div onClick={handleDelete} className="func">
+      <div onClick={handleDelete} style={{cursor:'pointer'}} className="func">
         <RxCross2 color="red" size={24} />
         Delete
       </div>
-      <div
+      {clicked === "teachers" && <div
+      style={{cursor:'pointer'}}
         onClick={() => {
           if (clicked === "teachers") handleLessonClick();
         }}
@@ -22,7 +23,8 @@ const Functions = ({ handleNew, handleDelete, clicked, handleLessonClick }) => {
       >
         <FaChalkboardTeacher size={20} color="#72bcd4" />
         Lessons
-      </div>
+      </div> }
+      
     </div>
   );
 };
